@@ -2,13 +2,9 @@
 import AppHeader from './components/layout/AppHeader.vue';
 import AppFooter from './components/layout/AppFooter.vue';
 import { ref } from 'vue';
+import usePlayer from './composables/usePlayer';
 
-const username = ref("Игрок")
-const isLoggedIn = ref(false)
-
-
-
-
+const { isLoggedIn, username } = usePlayer()
 </script>
 
 <template>
