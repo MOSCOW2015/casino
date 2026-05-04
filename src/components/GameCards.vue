@@ -6,42 +6,50 @@ const games = ref([
     name: "Book of Ra",
     provider: "Royal Casino",
     badge: "NEW",
-    emoji: '🎰'},
+    emoji: '🎰',
+    route: '/slots'},
 
     {id: 2,
     name: "Black Jack Pro",
     provider: "Royal Casino",
     badge: "FIRE",
-    emoji: '♠️'},
+    emoji: '♠️',
+    route: '/blackjack'},
 
     {id: 3,
     name: "Poker Texas",
     provider: "Royal Casino",
     badge: "NEW",
-    emoji: '♦️'},
+    emoji: '♦️',
+    route: '/poker'},
 
     {id: 4,
     name: "Roulette",
     provider: "Royal Casino",
     badge: "Live",
-    emoji: '🎡'},
+    emoji: '🎡',
+    route: '/roulette'},
+
+    
 ])
 </script>
 
 <template>
         <section>
             <div v-for="game in games" :key="game.id">
-                <div>{{ game.name }}</div>
-                <div>{{ game.provider }}</div>
-                <div :class="{
+                <RouterLink :to="game.route">
+                    <div>{{ game.name }}</div>
+                    <div>{{ game.provider }}</div>
+                    <div :class="{
                     'badge-new': game.badge === 'NEW',
                     'badge-fire': game.badge === 'FIRE',
                     'badge-live': game.badge === 'Live'
                     }">
                     {{ game.badge }}
-                </div>
+                    </div>
 
                 <div>{{ game.emoji }}</div>
+                </RouterLink>
             </div>
         </section>
 </template>
