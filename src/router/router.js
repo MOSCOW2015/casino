@@ -7,16 +7,18 @@ import SlotsView from '../views/SlotsView.vue'
 import BlackJackView from '../views/BlackJackView.vue'
 import RouletteView from '../views/RouletteView.vue'
 import PokerViews from '../views/PokerViews.vue'
+import usePlayer from '../composables/usePlayer'
 
+const { isLoggedIn } = usePlayer() 
 
 const routes = [
     {path:'/', component: HomeView, name: 'HomeView'},
     {path:'/login', component: LoginView, name: 'LoginView'},
     {path:'/register', component: RegisterView, name: 'RegisterView'},
-    {path: '/slots', component: SlotsView, name: 'SlotsView'},
-    {path: '/blackjack', component: BlackJackView, name: 'BlackJackView'},
-    {path: '/poker', component: PokerViews, name: 'PokerViews'},
-    {path: '/roulette', component: RouletteView, name: 'RouletteView'},
+    {path: '/slots', component: SlotsView, name: 'SlotsView', meta: {needAuth: true}},
+    {path: '/blackjack', component: BlackJackView, name: 'BlackJackView', meta: {needAuth: true}},
+    {path: '/poker', component: PokerViews, name: 'PokerViews', meta: {needAuth: true}},
+    {path: '/roulette', component: RouletteView, name: 'RouletteView', meta: {needAuth: true}},
     {path:'/:routeMatch(.*)*', component: NotFoundView, name: 'NotFoundView'}
 ]
 
@@ -24,4 +26,12 @@ const routes = [
 export const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next, ) => {
+    if(!isLoggedIn.value && to.meta.needAuth){
+        next({name: 'LoginView'})
+    } else {
+        next()
+    }
 })
