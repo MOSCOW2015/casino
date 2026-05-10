@@ -1,4 +1,15 @@
 <script setup>
+import { useRouter } from 'vue-router';
+import usePlayer from '../../composables/usePlayer';
+
+const { logOut } = usePlayer()
+const router = useRouter()
+
+function loginExit(){
+  logOut()
+  router.push('/')
+}
+
 defineProps({
     isLoggedIn: Boolean,
     username: String,
@@ -26,6 +37,7 @@ defineProps({
         <div class="user-info" v-else>
             <span class="user-balance">{{ balance }} ₽</span>
             <span class="user-name">{{ username }}</span>
+            <button @click="loginExit">Выйти</button>
         </div>
     </header>
 </template>
