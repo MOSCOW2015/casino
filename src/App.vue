@@ -4,11 +4,11 @@ import AppFooter from './components/layout/AppFooter.vue';
 import { ref } from 'vue';
 import usePlayer from './composables/usePlayer';
 
-const { isLoggedIn, username } = usePlayer()
+const { isLoggedIn, username, balance } = usePlayer()
 </script>
 
 <template>
-    <AppHeader :isLoggedIn :username/>
+    <AppHeader :isLoggedIn :username :balance/>
     <RouterView />
 
     <AppFooter />
