@@ -24,5 +24,5 @@ function spin() {
 }
 
 export default function useSlots() {
-    return { spin }
+    return { spin, symbols }
 }
