@@ -12,21 +12,57 @@ if (localStorage.getItem('isLoggedIn')){
     isLoggedIn.value = localStorage.getItem('isLoggedIn')
 }
 
-function handleLogin(name){
+function getUsers() {
+    return JSON.parse(localStorage.getItem('users')) || []
+}
+
+
+function register(name, password){
+    const users = getUsers()
+    const exists = users.find(u => u.username === name)
+    if (exists){
+        return false
+    } else {
+        users.push({ username: name, password })
+        localStorage.setItem('users', JSON.stringify(users))
+        handleLogin(name, password)
+        return true
+    }
+}
+
+
+function handleLogin(name, password){
+    const users = getUsers()
+    const user = users.find(u => u.username === name && u.password === password)
+    if (!user) {
+        return false
+    }
+    balance.value = user.balance || 1000;
     username.value = name
     isLoggedIn.value = true
     localStorage.setItem('username', username.value)
     localStorage.setItem('balance', balance.value)
     localStorage.setItem('isLoggedIn', isLoggedIn.value)
+    return true
 }
 
 function logOut(){
+    const users = getUsers()
+    const idx = users.findIndex(u => u.username === username.value)
+    if (idx !== -1) {
+        users[idx].balance = balance.value
+        localStorage.setItem('users', JSON.stringify(users))
+    }
+
     username.value = ''
     isLoggedIn.value = false
     balance.value = 1000
-    localStorage.clear()
+    localStorage.removeItem('username')
+    localStorage.removeItem('balance')
+    localStorage.removeItem('isLoggedIn')
+    
 }
 
 export default function usePlayer(){
-    return {username, balance, refillCount, isLoggedIn, handleLogin, logOut };
+    return {username, balance, refillCount, isLoggedIn, handleLogin, logOut, register };
 }
