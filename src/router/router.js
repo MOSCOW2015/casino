@@ -6,7 +6,8 @@ import NotFoundView from '../views/NotFoundView.vue'
 import SlotsView from '../views/SlotsView.vue'
 import BlackJackView from '../views/BlackJackView.vue'
 import RouletteView from '../views/RouletteView.vue'
-import PokerViews from '../views/PokerViews.vue'
+import ProfileView from '../views/ProfileView.vue'
+import CrashView from '../views/CrashView.vue'
 import usePlayer from '../composables/usePlayer'
 
 const { isLoggedIn } = usePlayer() 
@@ -17,8 +18,9 @@ const routes = [
     {path:'/register', component: RegisterView, name: 'RegisterView'},
     {path: '/slots', component: SlotsView, name: 'SlotsView', meta: {needAuth: true}},
     {path: '/blackjack', component: BlackJackView, name: 'BlackJackView', meta: {needAuth: true}},
-    {path: '/poker', component: PokerViews, name: 'PokerViews', meta: {needAuth: true}},
+    {path: '/crash', component: CrashView, name: 'CrashView', meta: {needAuth: true}},
     {path: '/roulette', component: RouletteView, name: 'RouletteView', meta: {needAuth: true}},
+    {path: '/profile', component: ProfileView, name: 'ProfileView', meta: {needAuth: true}},
     {path:'/:routeMatch(.*)*', component: NotFoundView, name: 'NotFoundView'}
 ]
 

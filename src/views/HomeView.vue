@@ -1,43 +1,49 @@
 <script setup>
-import LoginForms from '../components/LoginForms.vue';
 import GameCards from '../components/GameCards.vue';
-import usePlayer from '../composables/usePlayer';
 
-const { username, balance, refillCount, isLoggedIn, handleLogin } = usePlayer()
 </script>
 <template>
-    <LoginForms v-if="!isLoggedIn" @login="handleLogin"/>
     <main>
-        <div>Добро пожаловать, {{ username }}</div>
-        <div :class="{
-            'balance-high': balance > 1000,
-            'balance-low': balance < 100
-        }">
-        Баланс: {{ balance }} ₽</div>
-        <div>Пополнений сегодня {{ refillCount }}</div>
-        <div v-if="balance > 5000">Статус: ★ VIP</div>
-        <div v-if="balance===0">
-            Пополните счёт
-        </div>
-        <div v-else>
-            <button @click="balance = 0">Обнулить</button>
-            <button v-if="balance > 0" @click="balance *= 2">Удвоить</button>
-            <button @click="balance += 1000; refillCount++">+1000</button>
-        </div>
-    </main>
+        <section class="hero">
+        <h1>ROYALE CASINO</h1>
+        <RouterLink to="/slots" class="hero-btn">Играть сейчас</RouterLink>
+    </section>
 
     <GameCards />
+    </main>
+
 </template>
 <style scoped>
-.badge-jackpot {
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    gap: 20px;
+}
+
+.hero h1 {
+    font-size: 64px;
     color: var(--gold);
+    letter-spacing: 8px;
 }
 
-.balance-high {
-    color: var(--green);
+.hero p {
+    font-size: 20px;
+    color: var(--text-secondary);
 }
 
-.balance-low {
-    color: var(--red)
+.hero-btn {
+    background: var(--gold);
+    color: #000;
+    padding: 14px 40px;
+    border-radius: var(--radius-md);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
 }
+
 </style>
