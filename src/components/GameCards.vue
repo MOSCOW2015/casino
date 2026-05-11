@@ -17,11 +17,11 @@ const games = ref([
     route: '/blackjack'},
 
     {id: 3,
-    name: "Poker Texas",
+    name: "Crash",
     provider: "Royal Casino",
     badge: "NEW",
-    emoji: '♦️',
-    route: '/poker'},
+    emoji: '🚀',
+    route: '/crash'},
 
     {id: 4,
     name: "Roulette",
