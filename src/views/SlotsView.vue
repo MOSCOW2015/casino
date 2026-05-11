@@ -5,7 +5,7 @@ import usePlayer from '../composables/usePlayer';
 import useSlots from '../composables/useSlots';
 
 const { spin } = useSlots()
-const {balance} = usePlayer()
+const { balance, recordGame } = usePlayer()
 const reels = ref([])
 const bet = ref(0)
 const hasSpin = ref(false)
@@ -43,6 +43,7 @@ function clickSpin() {
     } else {
         lastWin.value = 0
     }
+    recordGame(lastWin.value)
 }
 
 </script>

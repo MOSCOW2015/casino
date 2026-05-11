@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import usePlayer from './usePlayer'
 
-const { balance } = usePlayer()
+const { balance, recordGame } = usePlayer()
 
 const deck = ref([])
 const playerHand = ref([])
@@ -90,10 +90,11 @@ function finish() {
     const playerScore = handScore(playerHand.value)
     const dealerScore = handScore(dealerHand.value)
 
+    let win = 0
     if (playerScore > 21) {
         message.value = 'Перебор — вы проиграли'
     } else if (dealerScore > 21 || playerScore > dealerScore) {
-        const win = playerScore === 21 && playerHand.value.length === 2
+        win = playerScore === 21 && playerHand.value.length === 2
             ? Math.floor(bet.value * 2.5)
             : bet.value * 2
         balance.value += win
@@ -104,6 +105,7 @@ function finish() {
     } else {
         message.value = 'Дилер выиграл'
     }
+    recordGame(win)
 }
 
 export default function useBlackjack() {

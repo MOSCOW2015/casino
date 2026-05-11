@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 import usePlayer from './usePlayer'
 
-const { balance } = usePlayer()
+const { balance, recordGame } = usePlayer()
 
 const multiplier = ref(1.00)
-const gameState = ref('idle') // idle | running | crashed | cashedOut
+const gameState = ref('idle') 
 const bet = ref(0)
 const cashoutMultiplier = ref(null)
 const crashPoint = ref(null)
@@ -17,9 +17,14 @@ function generateCrashPoint() {
     return Math.max(1.00, Math.floor((100 / (r * 100)) * 100) / 100)
 }
 
+function stopInterval() {
+    clearInterval(interval)
+}
+
 function startGame() {
     if (bet.value <= 0 || bet.value > balance.value) return
 
+    clearInterval(interval)
     balance.value -= bet.value
     multiplier.value = 1.00
     cashoutMultiplier.value = null
@@ -33,6 +38,7 @@ function startGame() {
             multiplier.value = crashPoint.value
             gameState.value = 'crashed'
             clearInterval(interval)
+            recordGame(0)
         }
     }, 100)
 }
@@ -45,6 +51,7 @@ function cashOut() {
     const win = Math.floor(bet.value * multiplier.value)
     balance.value += win
     gameState.value = 'cashedOut'
+    recordGame(win)
 }
 
 function reset() {
@@ -55,5 +62,5 @@ function reset() {
 }
 
 export default function useCrash() {
-    return { multiplier, gameState, bet, cashoutMultiplier, startGame, cashOut, reset }
+    return { multiplier, gameState, bet, cashoutMultiplier, startGame, cashOut, reset, stopInterval }
 }

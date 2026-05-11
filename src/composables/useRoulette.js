@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import usePlayer from './usePlayer'
 
-const { balance } = usePlayer()
+const { balance, recordGame } = usePlayer()
 
 const NUMBER_COLORS = {
     0: 'green',
@@ -53,6 +53,7 @@ function spin() {
         winnings.value += payout
         balance.value += payout
     }
+    recordGame(winnings.value)
 }
 
 function resolveBet(bet, number) {
