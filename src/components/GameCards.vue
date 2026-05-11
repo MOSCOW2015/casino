@@ -3,28 +3,28 @@ import { ref } from 'vue';
 
 const games = ref([
     {id: 1,
-    name: "Book of Ra",
+    name: "Слоты",
     provider: "Royal Casino",
     badge: "NEW",
     emoji: '🎰',
     route: '/slots'},
 
     {id: 2,
-    name: "Black Jack Pro",
+    name: "Блэкджек",
     provider: "Royal Casino",
     badge: "FIRE",
     emoji: '♠️',
     route: '/blackjack'},
 
     {id: 3,
-    name: "Crash",
+    name: "Краш",
     provider: "Royal Casino",
     badge: "NEW",
     emoji: '🚀',
     route: '/crash'},
 
     {id: 4,
-    name: "Roulette",
+    name: "Рулетка",
     provider: "Royal Casino",
     badge: "Live",
     emoji: '🎡',

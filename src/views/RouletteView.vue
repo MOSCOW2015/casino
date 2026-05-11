@@ -16,7 +16,7 @@ function getBetOnNumber(n) {
 
 <template>
     <div class="roulette-page">
-        <h2>Рулетка</h2>
+        <h2>Roulette</h2>
         <div class="balance">Баланс: {{ balance }} ₽</div>
 
         <div v-if="gameState === 'result'" class="result-overlay">

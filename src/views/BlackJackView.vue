@@ -8,7 +8,7 @@ const { balance } = usePlayer()
 
 <template>
     <div class="bj-page">
-        <h2>Блэкджек</h2>
+        <h2>Black Jack Pro</h2>
         <div class="balance">Баланс: {{ balance }} ₽</div>
 
         <div class="dealer-section">
