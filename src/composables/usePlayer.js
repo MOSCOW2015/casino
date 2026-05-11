@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 
 const username = ref("")
@@ -62,6 +62,12 @@ function logOut(){
     localStorage.removeItem('isLoggedIn')
     
 }
+
+watch(balance, (newVal) => {
+    if (isLoggedIn.value) {
+        localStorage.setItem('balance', newVal)
+    }
+})
 
 export default function usePlayer(){
     return {username, balance, refillCount, isLoggedIn, handleLogin, logOut, register };
