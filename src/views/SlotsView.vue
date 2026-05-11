@@ -173,4 +173,24 @@ h2 {
 .result-smallwin { color: var(--casino-text-primary); }
 .result-lose     { color: var(--red); }
 
+@media (max-width: 768px) {
+    .slots-page {
+        padding: 24px 16px;
+        gap: 16px;
+    }
+
+    .reels {
+        gap: 6px;
+    }
+
+    .reel {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+
+    .controls input {
+        width: 110px;
+    }
+}
 </style>
