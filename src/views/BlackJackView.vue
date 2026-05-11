@@ -174,4 +174,26 @@ h2 {
 
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 .btn-outline:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+    .bj-page {
+        padding: 24px 16px;
+        gap: 16px;
+    }
+
+    .card {
+        width: 52px;
+        height: 76px;
+        font-size: 14px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .bet-input {
+        width: 110px;
+    }
+}
 </style>

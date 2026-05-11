@@ -286,4 +286,40 @@ h2 {
     color: var(--gold);
     letter-spacing: 2px;
 }
+
+@media (max-width: 768px) {
+    .roulette-page {
+        padding: 24px 12px;
+        gap: 16px;
+    }
+
+    .numbers-grid {
+        grid-template-columns: repeat(12, 28px);
+        grid-template-rows: repeat(3, 28px);
+        gap: 2px;
+    }
+
+    .cell-zero {
+        width: 28px;
+        font-size: 11px;
+    }
+
+    .cell {
+        font-size: 10px;
+    }
+
+    .outside-bets {
+        gap: 6px;
+    }
+
+    .btn-outside {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 </style>

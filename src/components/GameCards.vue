@@ -62,6 +62,20 @@ const games = ref([
     padding: 40px;
 }
 
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .game-card {
     background: var(--casino-bg-card);
     border: var(--border-card);

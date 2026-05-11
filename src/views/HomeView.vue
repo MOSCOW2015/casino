@@ -46,4 +46,19 @@ import GameCards from '../components/GameCards.vue';
     letter-spacing: 2px;
 }
 
+@media (max-width: 768px) {
+    .hero {
+        padding: 48px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+
+    .hero-btn {
+        font-size: 16px;
+        padding: 12px 28px;
+    }
+}
 </style>

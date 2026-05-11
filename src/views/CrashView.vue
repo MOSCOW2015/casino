@@ -190,4 +190,25 @@ h2 {
 .result-win {
     color: var(--gold);
 }
+
+@media (max-width: 768px) {
+    .crash-page {
+        padding: 24px 16px;
+        gap: 20px;
+    }
+
+    .multiplier-display {
+        width: 200px;
+        height: 200px;
+    }
+
+    .multiplier-value {
+        font-size: 40px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 </style>
