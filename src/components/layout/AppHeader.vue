@@ -36,7 +36,7 @@ defineProps({
         </div>
         <div class="user-info" v-else>
             <span class="user-balance">{{ balance }} ₽</span>
-            <span class="user-name">{{ username }}</span>
+            <RouterLink to="/profile" class="user-name">{{ username }}</RouterLink>
             <button class="btn-logout" @click="loginExit">Выйти</button>
         </div>
     </header>
@@ -136,6 +136,18 @@ nav a.router-link-active {
 .user-name {
     color: var(--casino-text-primary);
     font-size: 14px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm);
+    padding: 5px 12px;
+    letter-spacing: 0.5px;
+    transition: border-color var(--t-fast), color var(--t-fast);
+}
+
+.user-name:hover {
+    border-color: var(--gold);
+    color: var(--gold);
 }
 
 .btn-logout {
