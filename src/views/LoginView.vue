@@ -10,7 +10,7 @@ const passwordInput = ref('')
 const error = ref('')
 
 function submit(){
-    if(!loginInput.value){
+    if(!loginInput.value || !passwordInput.value){
         error.value = 'Заполните все поля'
         return
     }
