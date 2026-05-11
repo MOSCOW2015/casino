@@ -27,7 +27,7 @@
             <ul class="footer-col-list">
               <li><RouterLink to="/slots">Слоты</RouterLink></li>
               <li><RouterLink to="/blackjack">Блэкджек</RouterLink></li>
-              <li><RouterLink to="/poker">Покер</RouterLink></li>
+              <li><RouterLink to="/crash">Краш</RouterLink></li>
               <li><RouterLink to="/roulette">Рулетка</RouterLink></li>
             </ul>
           </div>

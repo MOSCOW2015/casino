@@ -1,9 +1,14 @@
 <script setup>
+import { onUnmounted } from 'vue'
 import useCrash from '../composables/useCrash'
 import usePlayer from '../composables/usePlayer'
 
-const { multiplier, gameState, bet, cashoutMultiplier, startGame, cashOut, reset } = useCrash()
+const { multiplier, gameState, bet, cashoutMultiplier, startGame, cashOut, reset, stopInterval } = useCrash()
 const { balance } = usePlayer()
+
+onUnmounted(() => {
+    stopInterval()
+})
 </script>
 
 <template>
